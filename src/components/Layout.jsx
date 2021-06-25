@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import BaseStyle from '../atoms/BaseStyle';
-import Footer from '../atoms/Footer';
-import Nav from '../atoms/Nav';
+import BaseStyle from './BaseStyle';
+import Footer from './Footer';
+import Nav from './Nav';
 
 import 'normalize.css';
 

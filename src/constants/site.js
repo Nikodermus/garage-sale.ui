@@ -1,7 +1,12 @@
 export const COLORS = {
-    brandBlack: '#707070',
-    brandYellow: '#E19B42',
-    brandOrange: '#dd4e38',
+    brandBlack: '#151515',
+    brandBlue: '#34FCD8',
+    brandGreen: '#36FF79',
+    brandGreenDark: '#2ECC5E',
+    brandGreenLight: '#CFF9DA',
+    brandPink: '#EB2764',
+    brandRed: '#DF0147',
+    brandYellow: '#F7DF1E',
 
     //  Neutrals
     black: '#292A2B',
@@ -15,20 +20,16 @@ export const COLORS = {
 };
 
 export const INFO = {
-    address: 'REPLACE_ME',
     color: COLORS.brandOrange,
-    description: `REPLACE_ME`,
-    email: 'REPLACE_ME@gmail.com',
-    googleMaps: 'REPLACE_ME',
+    description: `¡Nos vamos! Compra todas nuestras pertenencias`,
+    email: 'nicolasm@nikodermus.media',
     language: 'es-CO',
-    name: 'REPLACE_ME',
-    number: '57REPLACE_ME',
-    URL: 'https://REPLACE_ME.com',
+    name: 'El Garage de Brandy',
+    number: '573108658194',
+    URL: 'https://garage.netlify.com',
 };
 
 export const SOCIAL_MEDIA = {
-    facebook: 'https://www.facebook.com/REPLACE_ME/',
-    instagram: 'https://www.instagram.com/REPLACE_ME/',
     whatsapp: `https://wa.me/${INFO.number}?text=${encodeURI(
         INFO.description
     )}`,

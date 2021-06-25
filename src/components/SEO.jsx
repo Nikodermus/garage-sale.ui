@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { INFO } from '../../../constants/site';
+import { INFO } from '../constants/site';
 
 function SEO({ description, lang, meta, title }) {
     const { site } = useStaticQuery(

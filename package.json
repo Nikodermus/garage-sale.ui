@@ -11,18 +11,14 @@
     "esm": "^3.2.25",
     "gatsby": "^2.26.1",
     "gatsby-image": "^2.5.0",
-    "gatsby-plugin-google-analytics": "^2.10.0",
-    "gatsby-plugin-google-gtag": "^2.7.0",
     "gatsby-plugin-manifest": "^2.6.1",
     "gatsby-plugin-netlify": "^2.10.0",
     "gatsby-plugin-offline": "^3.4.0",
     "gatsby-plugin-react-helmet": "^3.4.0",
-    "gatsby-plugin-sanity-image": "^0.2.1",
     "gatsby-plugin-sharp": "^2.8.0",
     "gatsby-plugin-sitemap": "^2.11.0",
     "gatsby-plugin-styled-components": "^3.9.0",
     "gatsby-source-filesystem": "^2.5.0",
-    "gatsby-source-sanity": "^6.0.5",
     "gatsby-transformer-sharp": "^2.6.0",
     "lodash.debounce": "^4.0.8",
     "normalize.css": "^8.0.1",
@@ -62,13 +58,15 @@
     "gatsby"
   ],
   "scripts": {
-    "build": "NODE_OPTIONS='-r esm' gatsby build",
+    "build": "yarn data && yarn build:gatsby",
+    "build:gatsby": "NODE_OPTIONS='-r esm' gatsby build",
     "clean": "NODE_OPTIONS='-r esm' gatsby clean",
     "format": "prettier --write \"**/*.{yaml,yml,json,md,html,css}\" && eslint \"**/*.{js,jsx,gql}\" --fix",
     "page:create": "node -r esm ./scripts/page-create.js",
     "page:delete": "node -r esm ./scripts/page-delete.js",
     "serve": "NODE_OPTIONS='-r esm' gatsby serve",
     "start": "GATSBY_GRAPHQL_IDE=playground NODE_OPTIONS='-r esm' gatsby develop",
-    "test": "jest"
+    "test": "jest",
+    "data": "node -r esm -r dotenv/config ./scripts/toJSON.js"
   }
 }

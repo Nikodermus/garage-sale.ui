@@ -5,7 +5,7 @@ import {
     createPlainVariables,
     createSizeVariables,
     toREM,
-} from '../../../utils/styled';
+} from '../utils/styled';
 import {
     BORDER_RADIUS,
     BREAKPOINTS,
@@ -18,8 +18,9 @@ import {
     SIZINGS,
     TRANSITION,
     Z_INDEX,
-} from '../../../constants/styled';
-import { COLORS } from '../../../constants/site';
+} from '../constants/styled';
+import { COLORS } from '../constants/site';
+import fondo from '../../static/images/bg.svg';
 
 const BaseStyle = createGlobalStyle`
     :root{
@@ -37,25 +38,33 @@ const BaseStyle = createGlobalStyle`
         ${createPlainVariables(TRANSITION, 'transition')}
         ${createPlainVariables(Z_INDEX, 'z-index')}
 
-        --font-size-px: ${FONT_SIZE_BASE_PX};
         --box: ${toREM(1000)};
+        --font-size-px: ${FONT_SIZE_BASE_PX};
+        --nav-size: var(--sizing-XL);
     }
 
-    html{
+    canvas{
+        display: none !important;
+    }
+
+    html {
         font-size: ${FONT_SIZE_BASE_PX}px;
     }
 
-    body{
+    body {
         font-size: var(--font-size-LG);
+        padding-top: var(--nav-size);
+        overflow: hidden;
     }
 
     html, body{
-        color: var(--color-brand-black);
+        background: url(${fondo}) repeat, var(--color-brand-pink);
+        color: white;
         font-family: var(--font-family-main);
         max-width: 100vw;
-        min-height: 100vh;
         overflow-x: hidden;
         width: 100%;
+        min-height: 100vh;
     }
 
     *,
@@ -83,7 +92,7 @@ const BaseStyle = createGlobalStyle`
     h5,
     h6 {
         font-family: var(--font-family-title);
-        font-weight: var(--font-weight-bld);
+        font-weight: var(--font-weight-reg);
     }
 
 
@@ -100,26 +109,26 @@ const BaseStyle = createGlobalStyle`
     a,
     textarea {
         background: transparent;
-        border-radius: 0;
         border: 0;
+        border-radius: 0;
         outline: 0;
 
         &:hover {
-            cursor: pointer;
             outline: 0;
+            cursor: pointer;
         }
     }
 
     a,
     a:visited,
     a:focus {
-        color: inherit;
         text-decoration: none;
+        color: inherit;
 
         &:hover {
+            text-decoration: none;
             color: inherit;
             cursor: pointer;
-            text-decoration: none;
         }
     }
 `;

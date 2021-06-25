@@ -2,14 +2,6 @@ module.exports = {
     root: true,
     extends: ['wesbos'],
     rules: {
-        'no-unused-vars': [
-            'error',
-            {
-                ignoreRestSiblings: true,
-                varsIgnorePattern: '^_',
-                argsIgnorePattern: '^_',
-            },
-        ],
         'prettier/prettier': [
             'error',
             {

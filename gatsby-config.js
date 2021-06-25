@@ -2,7 +2,7 @@ import { INFO } from './src/constants/site';
 
 const config = {
     siteMetadata: {
-        author: 'REPLACE_ME',
+        author: 'Nikodermus',
         description: INFO.description,
         siteUrl: INFO.URL,
         title: INFO.name,
@@ -10,7 +10,6 @@ const config = {
     plugins: [
         `gatsby-plugin-netlify`,
         `gatsby-plugin-react-helmet`,
-        `gatsby-plugin-sanity-image`,
         `gatsby-plugin-sharp`,
         `gatsby-plugin-styled-components`,
         `gatsby-transformer-sharp`,
@@ -38,41 +37,6 @@ const config = {
                 theme_color: INFO.color,
                 display: `minimal-ui`,
                 icon: `static/images/favicon.png`,
-            },
-        },
-        {
-            resolve: `gatsby-plugin-google-analytics`,
-            options: {
-                trackingId: 'REPLACE_ME',
-                head: true,
-            },
-        },
-        {
-            resolve: `gatsby-plugin-google-gtag`,
-            options: {
-                trackingIds: ['REPLACE_ME'],
-                gtagConfig: {
-                    anonymize_ip: true,
-                    cookie_expires: 0,
-                },
-                pluginConfig: {
-                    head: false,
-                    respectDNT: true,
-                },
-            },
-        },
-        // Uncomment and add your projectID and dataset
-        // {
-        //     resolve: `gatsby-source-sanity`,
-        //     options: {
-        //         projectId: `REPLACE_ME`,
-        //         dataset: `production`,
-        //     },
-        // },
-        {
-            resolve: `gatsby-plugin-sitemap`,
-            options: {
-                exclude: [`/__generated/*`],
             },
         },
     ],
