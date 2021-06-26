@@ -35,7 +35,9 @@ const Nav = () => {
     const { ref, height } = useDimensions({ useBorderBoxSize: true });
     const message = useWhatsappMessage();
     const [value, setValue] = useState(() => {
-        const params = new URLSearchParams(window.location.search);
+        const params = new URLSearchParams(
+            typeof window === 'undefined' ? '' : window.location.search
+        );
         const search = params.get('search');
         return search || '';
     });
