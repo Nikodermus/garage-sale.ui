@@ -1,19 +1,44 @@
-import React, { useEffect } from 'react';
-import { Link } from 'gatsby';
+import React, { useEffect, useState } from 'react';
 
 import styled from 'styled-components';
 import useDimensions from 'react-cool-dimensions';
+import { navigate } from 'gatsby';
+import wa from '../../static/images/wa.png';
 import Input from './Input';
+import { useWhatsappMessage } from '../utils/hooks';
 
 const StyledNav = styled.nav`
-    padding: var(--sizing-LG);
+    padding: var(--sizing-2XL) 0;
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: var(--z-index-nav);
+    padding-bottom: var(--sizing-3XL);
+`;
+
+const StyledDiv = styled.div`
+    width: var(--box);
+    margin: auto;
+    display: flex;
+    gap: var(--sizing-XL);
+`;
+
+const StyledImg = styled.img`
+    width: 4rem;
+
+    &:hover {
+        transform: scale(1.2);
+    }
 `;
 
 const Nav = () => {
     const { ref, height } = useDimensions({ useBorderBoxSize: true });
+    const message = useWhatsappMessage();
+    const [value, setValue] = useState(() => {
+        const params = new URLSearchParams(window.location.search);
+        const search = params.get('search');
+        return search || '';
+    });
 
     useEffect(() => {
         document.documentElement.style.setProperty(
@@ -22,9 +47,30 @@ const Nav = () => {
         );
     }, [height]);
 
+    useEffect(() => {
+        const params = new URLSearchParams();
+        params.append('search', value);
+        navigate(`/?${params.toString()}`);
+    }, [value]);
+
     return (
         <StyledNav ref={ref}>
-            <Input type="text" placeholder="Busca en el garage..."></Input>
+            <StyledDiv>
+                <Input
+                    type="text"
+                    placeholder="Busca en el garage..."
+                    value={value}
+                    onChange={(e) => setValue(e.target.value)}
+                ></Input>
+
+                <a
+                    href={message}
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                >
+                    <StyledImg src={wa} alt="" />
+                </a>
+            </StyledDiv>
         </StyledNav>
     );
 };

@@ -1,0 +1,3 @@
+export const CSS_TRANSITION_TIME = 300;
+export const CHANGE_SHAPE_TIME_LOWEST = 1200;
+export const CHANGE_SHAPE_TIME_HIGHEST = 1000;

@@ -8,7 +8,7 @@ const StyledInput = styled.input`
     width: 100%;
     border: 2px solid transparent;
     text-align: center;
-    border-radius: var(--border-radius-SM);
+    border-radius: var(--border-radius-LG);
 
     &:focus {
         border-color: var(--color-brand-green);

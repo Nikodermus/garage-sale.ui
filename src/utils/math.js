@@ -8,3 +8,12 @@ export const formatNumber = (num, locale = INFO.language) =>
 
 export const formatPhone = (num = INFO.phone) =>
     String(num).replace(phone, '+$1 $2 $3 $4');
+
+export const formatPrice = (num, locale = INFO.language) =>
+    Intl.NumberFormat(locale, {
+        style: 'currency',
+        currency: 'COP',
+        // notation: 'compact',
+        // compactDisplay: 'long',
+        maximumFractionDigits: typeof window === 'undefined' ? undefined : 0,
+    }).format(num);

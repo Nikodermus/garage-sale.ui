@@ -21,6 +21,7 @@ import {
 } from '../constants/styled';
 import { COLORS } from '../constants/site';
 import fondo from '../../static/images/bg.svg';
+import pink from '../../static/images/bg-pink.svg';
 
 const BaseStyle = createGlobalStyle`
     :root{
@@ -38,7 +39,7 @@ const BaseStyle = createGlobalStyle`
         ${createPlainVariables(TRANSITION, 'transition')}
         ${createPlainVariables(Z_INDEX, 'z-index')}
 
-        --box: ${toREM(1000)};
+        --box:clamp(320px,calc(100% - var(--sizing-6XL)), ${toREM(1450)});
         --font-size-px: ${FONT_SIZE_BASE_PX};
         --nav-size: var(--sizing-XL);
     }
@@ -57,14 +58,24 @@ const BaseStyle = createGlobalStyle`
         overflow: hidden;
     }
 
+    #___gatsby, #gatsby-focus-wrapper{
+        height: 100%;
+    }
+
     html, body{
-        background: url(${fondo}) repeat, var(--color-brand-pink);
+        background: url(${pink}) repeat, var(--color-brand-red);
         color: white;
         font-family: var(--font-family-main);
         max-width: 100vw;
         overflow-x: hidden;
         width: 100%;
         min-height: 100vh;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        html, body{
+            background: url(${fondo}) repeat, var(--color-brand-black);
+        }
     }
 
     *,

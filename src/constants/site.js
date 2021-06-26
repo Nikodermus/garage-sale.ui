@@ -21,12 +21,12 @@ export const COLORS = {
 
 export const INFO = {
     color: COLORS.brandOrange,
-    description: `¡Nos vamos! Compra todas nuestras pertenencias`,
+    description: `Hola, vi la venta de garaje y me interesa...`,
     email: 'nicolasm@nikodermus.media',
     language: 'es-CO',
-    name: 'El Garage de Brandy',
-    number: '573108658194',
-    URL: 'https://garage.netlify.com',
+    name: 'El Garaje de Brandy',
+    number: '573144431838',
+    URL: 'https://elgaraje.netlify.com',
 };
 
 export const SOCIAL_MEDIA = {
