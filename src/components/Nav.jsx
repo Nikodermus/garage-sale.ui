@@ -6,6 +6,8 @@ import { navigate } from 'gatsby';
 import wa from '../../static/images/wa.png';
 import Input from './Input';
 import { useWhatsappMessage } from '../utils/hooks';
+import { useMediaChange } from '../utils/context';
+import items from '../data.json';
 
 const StyledNav = styled.nav`
     padding: var(--sizing-2XL) 0;
@@ -55,12 +57,18 @@ const Nav = () => {
         navigate(`/?${params.toString()}`);
     }, [value]);
 
+    const { isMobile } = useMediaChange();
+
     return (
         <StyledNav ref={ref}>
             <StyledDiv>
                 <Input
                     type="text"
-                    placeholder="Busca en el garage..."
+                    placeholder={
+                        isMobile
+                            ? 'Busca en el garaje...'
+                            : `Busca entre ${items.length} cosas en el garaje...`
+                    }
                     value={value}
                     onChange={(e) => setValue(e.target.value)}
                 ></Input>

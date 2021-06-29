@@ -31,6 +31,10 @@ const StyledUL = styled.ul`
     `)}
 `;
 
+const StyledH2 = styled.h2`
+    font-size: var(--font-size-2XL);
+`;
+
 const isIn = (large, search) =>
     large.toLowerCase().trim().includes(search.toLowerCase().trim());
 
@@ -40,22 +44,21 @@ const IndexPage = ({ location }) => {
     const params = new URLSearchParams(location.search);
     const search = params.get('search');
 
+    const filteredItems = items
+        .filter(({ estado }) => estado === 'disponible')
+        .filter(({ nombre, notas }) => {
+            if (search) {
+                return isIn(nombre, search) || isIn(notas || '', search);
+            }
+            return true;
+        })
+        .sort((a, b) => b.precio - a.precio);
+
     return (
         <>
             <StyledUL>
-                {items
-                    .filter(({ estado }) => estado === 'disponible')
-                    .filter(({ nombre, notas }) => {
-                        if (search) {
-                            return (
-                                isIn(nombre, search) ||
-                                isIn(notas || '', search)
-                            );
-                        }
-                        return true;
-                    })
-                    .sort((a, b) => b.precio - a.precio)
-                    .map((item) => (
+                {filteredItems.length ? (
+                    filteredItems.map((item) => (
                         <Card
                             {...item}
                             key={item.nombre}
@@ -64,7 +67,10 @@ const IndexPage = ({ location }) => {
                                 setOpen(true);
                             }}
                         ></Card>
-                    ))}
+                    ))
+                ) : (
+                    <StyledH2>No hay nada con ese nombre :(</StyledH2>
+                )}
             </StyledUL>
 
             <Modal isOpen={open} onClose={() => setOpen(false)}>

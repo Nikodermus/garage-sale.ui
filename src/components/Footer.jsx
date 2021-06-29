@@ -6,9 +6,11 @@ import { formatPhone } from '../utils/math';
 import { INFO } from '../constants/site';
 
 const StyledFooter = styled.footer`
-    margin-top: auto;
-    padding: var(--sizing-XL);
+    margin: auto;
+    margin-bottom: 0;
+    padding: var(--sizing-XL) 0;
     font-weight: var(--font-weight-bld);
+    width: var(--box);
 
     a {
         text-decoration: underline;
@@ -20,6 +22,10 @@ const StyledImg = styled.img`
     vertical-align: bottom;
 `;
 
+const StyledSpan = styled.span`
+    white-space: nowrap;
+`;
+
 const Footer = () => {
     const message = useWhatsappMessage();
 
@@ -27,21 +33,25 @@ const Footer = () => {
         <StyledFooter>
             Laura y Nico venden todo. Recógelo en Chapinero, escribenos a
             nuestro{' '}
-            <a
-                href={message}
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-            >
-                <StyledImg src={wa} /> WhatsApp
-            </a>{' '}
+            <StyledSpan>
+                <a
+                    href={message}
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                >
+                    <StyledImg src={wa} /> WhatsApp
+                </a>{' '}
+            </StyledSpan>
             o llamanos al{' '}
-            <a
-                href={`tel:${INFO.number}`}
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-            >
-                {formatPhone(INFO.number)}
-            </a>
+            <StyledSpan>
+                <a
+                    href={`tel:${INFO.number}`}
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                >
+                    {formatPhone(INFO.number)}
+                </a>
+            </StyledSpan>
             .
         </StyledFooter>
     );

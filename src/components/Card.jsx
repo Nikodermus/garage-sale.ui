@@ -63,7 +63,10 @@ const StyledSmall = styled.small`
 const Card = ({ nombre, precio, foto, estado, open }) => (
     <StyledArticle onClick={open}>
         <figure>
-            <StyledImg src={foto} alt={nombre} />
+            <StyledImg
+                src={`${foto}?nombre=${encodeURIComponent(nombre)}`}
+                alt={nombre}
+            />
             <StyledFigcaption>
                 <StyledH3>{Case.capital(nombre)}</StyledH3>
                 <StyledSmall>{formatPrice(precio)}</StyledSmall>

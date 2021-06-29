@@ -41,7 +41,7 @@ const BaseStyle = createGlobalStyle`
 
         --box:clamp(320px,calc(100% - var(--sizing-6XL)), ${toREM(1450)});
         --font-size-px: ${FONT_SIZE_BASE_PX};
-        --nav-size: var(--sizing-XL);
+        --nav-size: ${toREM(120)};
     }
 
     canvas{
