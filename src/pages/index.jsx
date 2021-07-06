@@ -8,6 +8,7 @@ import Modal from '../components/Modal';
 import items from '../data.json';
 import { mediaDesktop, mediaDesktopXl, mediaTablet } from '../utils/styled';
 import DetailedView from '../components/DetailedView';
+import { ACTION_TYPES, useGlobalContext } from '../utils/context';
 
 const StyledUL = styled.ul`
     --columns: 1;
@@ -39,6 +40,7 @@ const isIn = (large, search) =>
     large.toLowerCase().trim().includes(search.toLowerCase().trim());
 
 const IndexPage = ({ location }) => {
+    const [state, dispatch] = useGlobalContext();
     const [open, setOpen] = useState(false);
     const [activeItem, setItem] = useState(null);
     const params = new URLSearchParams(location.search);
@@ -53,6 +55,15 @@ const IndexPage = ({ location }) => {
             return true;
         })
         .sort((a, b) => b.precio - a.precio);
+
+    useEffect(() => {
+        if (state.itemCount !== filteredItems.length) {
+            dispatch({
+                type: ACTION_TYPES.COUNT,
+                payload: filteredItems.length,
+            });
+        }
+    }, [state.itemCount, filteredItems.length, dispatch]);
 
     return (
         <>

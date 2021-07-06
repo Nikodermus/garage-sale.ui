@@ -13,14 +13,21 @@ import { BREAKPOINTS } from '../constants/styled';
 const MediaContext = createContext();
 const InfoContext = createContext();
 
-const initialState = {};
+const initialState = {
+    itemCount: 0,
+};
 
 export const ACTION_TYPES = {
     RESET: 'RESET',
+    COUNT: 'COUNT',
 };
 
-const reducer = (state, { type }) => {
+const reducer = (state, { type, payload }) => {
     switch (type) {
+        case ACTION_TYPES.COUNT: {
+            return { itemCount: payload };
+        }
+
         case ACTION_TYPES.RESET: {
             return { ...initialState };
         }

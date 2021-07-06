@@ -6,8 +6,7 @@ import { navigate } from 'gatsby';
 import wa from '../../static/images/wa.png';
 import Input from './Input';
 import { useWhatsappMessage } from '../utils/hooks';
-import { useMediaChange } from '../utils/context';
-import items from '../data.json';
+import { useGlobalContext, useMediaChange } from '../utils/context';
 
 const StyledNav = styled.nav`
     padding: var(--sizing-2XL) 0;
@@ -34,6 +33,7 @@ const StyledImg = styled.img`
 `;
 
 const Nav = () => {
+    const [{ itemCount }] = useGlobalContext();
     const { ref, height } = useDimensions({ useBorderBoxSize: true });
     const message = useWhatsappMessage();
     const [value, setValue] = useState(() => {
@@ -67,7 +67,7 @@ const Nav = () => {
                     placeholder={
                         isMobile
                             ? 'Busca en el garaje...'
-                            : `Busca entre ${items.length} cosas en el garaje...`
+                            : `Busca entre ${itemCount} cosas en el garaje...`
                     }
                     value={value}
                     onChange={(e) => setValue(e.target.value)}
